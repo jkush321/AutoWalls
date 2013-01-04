@@ -23,27 +23,19 @@
 
 package com.jkush321.autowalls.kits;
 
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-
-public class KitFood extends Kit {
-
-	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.COOKED_BEEF, 12) };
-	
-	@Override
-	public ItemStack[] getItemStack() {
-		return contents;
+public class Kit {
+	public ItemStack[] getItemStack(){
+		return null;
 	}
-
-	@Override
-	public int getRequiredPriority() {
+	public int getRequiredPriority(){
 		return 0;
 	}
-
-	@Override
-	public String getName() {
-		return "Food";
+	public String getName(){
+		return null;
 	}
-
+	public boolean isDefault(){
+		return false;
+	}
 }

@@ -1,3 +1,26 @@
+/*
+ * AutoWalls by jkush321 is licensed under the
+ * Creative Commons Attribution-NonCommercial 3.0 Unported License
+ * 
+ * You are fully allowed to modify the source code for your own network
+ * of servers, but you may not distribute the modified code outside of
+ * your servers.
+ * 
+ * AutoWalls was originally a personal project that was standalone for
+ * my own private server, and it slowly accumulated into a giant plugin.
+ * 
+ * AutoWalls is for dedicated servers that are willing to run just Walls.
+ * 
+ * The license requires attribution and you have to give credit to jkush321
+ * no matter how many changes were made to the code. In some clearly stated
+ * way everyone who goes on the server must be able to easily see and be aware
+ * of the fact that this code originated from jkush321 and was modified by
+ * you or your team.
+ * 
+ * For more information visit http://bit.ly/AutoWalls
+ * 
+ */
+
 package com.jkush321.autowalls;
 
 import java.util.ArrayList;
@@ -53,6 +76,9 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.jkush321.autowalls.kits.Kit;
+import com.jkush321.autowalls.kits.KitManager;
 
 public class AutoWalls extends JavaPlugin implements Listener {
 
@@ -649,13 +675,13 @@ public class AutoWalls extends JavaPlugin implements Listener {
 					if (config.isSet("votes.players." + cmdSender.getName()))
 						p = config.getInt("votes.players." + cmdSender.getName());
 					String m1 = "§7Available Kits: §f";
-					for (Kit k : KitManager.kits)
+					for (Kit k : KitManager.kitList)
 					{
 						if (k.getRequiredPriority()<=p)
 							m1 += "(" + k.getRequiredPriority() + ")" + k.getName() + ", ";
 					}
 					String m2 = "§7Unavailable Kits: §f";
-					for (Kit k : KitManager.kits)
+					for (Kit k : KitManager.kitList)
 					{
 						if (k.getRequiredPriority()>p)
 						m2 += "(" + k.getRequiredPriority() + ")" + k.getName() + ", ";
