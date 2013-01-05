@@ -29,7 +29,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class KitDemo extends Kit {
 
-	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.REDSTONE_TORCH_ON, 8), new ItemStack(Material.TNT, 6) };
+	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.FLINT_AND_STEEL, 1), new ItemStack(Material.TNT, 6) };
 	
 	@Override
 	public ItemStack[] getItemStack() {
