@@ -24,12 +24,32 @@
 package com.jkush321.autowalls.kits;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
 
-public class KitDemo extends Kit {
+public class KitFarmer extends Kit {
 
-	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.REDSTONE_TORCH_ON, 8), new ItemStack(Material.TNT, 6) };
+	ItemStack[] contents;
+	
+	public KitFarmer()
+	{
+		ItemStack hoe = new ItemStack(Material.DIAMOND_HOE);
+		ItemStack shovel = new ItemStack(Material.DIAMOND_SPADE);
+		ItemStack dirt = new ItemStack(Material.DIRT, 64);
+		ItemStack sand = new ItemStack(Material.SAND, 64);
+		ItemStack bonemeal = new ItemStack(Material.INK_SACK, 64, (short)15);//bonemeal
+		ItemStack buckets = new ItemStack(Material.BUCKET, 8);
+		ItemStack ice = new ItemStack(Material.ICE, 16);
+		ItemStack wheatSeed = new ItemStack(Material.SEEDS, 16);
+		ItemStack carrot = new ItemStack(Material.CARROT, 16);
+		ItemStack potato = new ItemStack(Material.POTATO, 16);
+		ItemStack sapling = new ItemStack(Material.SAPLING, 16);
+		ItemStack pumpkin = new ItemStack(Material.PUMPKIN, 16);
+		ItemStack melon = new ItemStack(Material.MELON, 16);
+		ItemStack cactus = new ItemStack(Material.CACTUS, 16);
+		contents = new ItemStack[]{ hoe, shovel, dirt, sand, bonemeal, bonemeal, bonemeal, buckets, ice, wheatSeed, carrot, potato, sapling, pumpkin, melon, cactus };
+	}
 	
 	@Override
 	public ItemStack[] getItemStack() {
@@ -38,7 +58,7 @@ public class KitDemo extends Kit {
 
 	@Override
 	public int getRequiredPriority() {
-		return 75;
+		return 35;
 	}
 
 }

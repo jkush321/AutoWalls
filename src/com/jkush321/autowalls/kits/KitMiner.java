@@ -27,9 +27,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 
-public class KitDemo extends Kit {
+public class KitMiner extends Kit {
 
-	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.REDSTONE_TORCH_ON, 8), new ItemStack(Material.TNT, 6) };
+	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.TORCH, 48), new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.EXP_BOTTLE, 8) };
 	
 	@Override
 	public ItemStack[] getItemStack() {
@@ -38,7 +38,7 @@ public class KitDemo extends Kit {
 
 	@Override
 	public int getRequiredPriority() {
-		return 75;
+		return 15;
 	}
 
 }

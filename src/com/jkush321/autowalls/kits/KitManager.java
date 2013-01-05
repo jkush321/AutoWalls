@@ -39,21 +39,29 @@ public class KitManager {
 	public static void fillKits()
 	{
 		kitList.add(new KitArcher());
-		kitList.add(new KitTools());
-		kitList.add(new KitDefault());
-		kitList.add(new KitMedic());
-		kitList.add(new KitWarrior());
-		kitList.add(new KitWarrior2());
 		kitList.add(new KitBuilder());
+		kitList.add(new KitBuilder2());
+		kitList.add(new KitCactus());
+		kitList.add(new KitDefault());
 		kitList.add(new KitDemo());
+		kitList.add(new KitElite());
+		kitList.add(new KitElite2());
+		kitList.add(new KitExcavator());
+		kitList.add(new KitFarmer());
 		kitList.add(new KitFood());
 		kitList.add(new KitFood2());
-		kitList.add(new KitPyro());
-		kitList.add(new KitElite());
-		kitList.add(new KitParatrooper());
-		kitList.add(new KitCactus());
 		kitList.add(new KitGhost());
+		kitList.add(new KitMedic());
+		kitList.add(new KitMiner());
+		kitList.add(new KitParatrooper());
+		kitList.add(new KitPyro());
+		kitList.add(new KitPyro2());
+		kitList.add(new KitSmelter());
+		kitList.add(new KitTools());
 		kitList.add(new KitTrader());
+		kitList.add(new KitWarrior());
+		kitList.add(new KitWarrior2());
+		kitList.add(new KitWarrior3());
 	}
 	
 	public static void setKit(Player p, Kit k)

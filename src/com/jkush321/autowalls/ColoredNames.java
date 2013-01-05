@@ -23,7 +23,6 @@
 
 package com.jkush321.autowalls;
 
-import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.kitteh.tag.PlayerReceiveNameTagEvent;
@@ -35,18 +34,18 @@ public class ColoredNames implements Listener {
 		{
 			if (AutoWalls.redTeam.contains(event.getNamedPlayer()))
 			{
-				event.setTag(ChatColor.DARK_RED + event.getNamedPlayer().getName());
+				event.setTag("§4" + event.getNamedPlayer().getName());
 			}else if (AutoWalls.blueTeam.contains(event.getNamedPlayer()))
 			{
-				event.setTag(ChatColor.DARK_AQUA + event.getNamedPlayer().getName());
+				event.setTag("§3" + event.getNamedPlayer().getName());
 			}else if (AutoWalls.orangeTeam.contains(event.getNamedPlayer()))
 			{
-				event.setTag(ChatColor.GOLD + event.getNamedPlayer().getName());
+				event.setTag("§6" + event.getNamedPlayer().getName());
 			}else if (AutoWalls.greenTeam.contains(event.getNamedPlayer()))
 			{
-				event.setTag(ChatColor.DARK_GREEN + event.getNamedPlayer().getName());
+				event.setTag("§2" + event.getNamedPlayer().getName());
 			}
 		}
-		else if (event.getPlayer().isOp()) event.setTag(ChatColor.DARK_GRAY + event.getNamedPlayer().getName());
+		else if (event.getPlayer().isOp()) event.setTag("§8" + event.getNamedPlayer().getName());
 	}
 }

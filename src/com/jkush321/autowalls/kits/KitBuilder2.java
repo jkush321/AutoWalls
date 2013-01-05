@@ -27,9 +27,9 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 
-public class KitDemo extends Kit {
+public class KitBuilder2 extends Kit {
 
-	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.REDSTONE_TORCH_ON, 8), new ItemStack(Material.TNT, 6) };
+	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.COBBLESTONE, 64), new ItemStack(Material.COBBLESTONE, 64), new ItemStack(Material.STONE, 64), new ItemStack(Material.STONE, 64), new ItemStack(Material.STONE, 64), new ItemStack(Material.STONE, 64), new ItemStack(98, 64), new ItemStack(98, 64), new ItemStack(Material.WOOD, 16) };
 	
 	@Override
 	public ItemStack[] getItemStack() {
@@ -38,7 +38,7 @@ public class KitDemo extends Kit {
 
 	@Override
 	public int getRequiredPriority() {
-		return 75;
+		return 30;
 	}
 
 }

@@ -24,12 +24,23 @@
 package com.jkush321.autowalls.kits;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
 
-public class KitDemo extends Kit {
+public class KitWarrior3 extends Kit {
 
-	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.REDSTONE_TORCH_ON, 8), new ItemStack(Material.TNT, 6) };
+	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.DIAMOND_SWORD, 1), new ItemStack(Material.COOKED_BEEF, 4), new ItemStack(Material.IRON_HELMET), new ItemStack(Material.IRON_CHESTPLATE, 1), new ItemStack(Material.IRON_LEGGINGS, 1), new ItemStack(Material.IRON_BOOTS, 1) };
+	
+	public KitWarrior3()
+	{
+		ItemStack bow = new ItemStack(Material.BOW);
+		bow.addEnchantment(Enchantment.ARROW_DAMAGE, 2);
+		bow.addEnchantment(Enchantment.ARROW_FIRE, 1);
+		bow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
+		
+		contents = new ItemStack[]{ new ItemStack(Material.DIAMOND_SWORD, 1), new ItemStack(Material.COOKED_BEEF, 4), new ItemStack(Material.IRON_HELMET), new ItemStack(Material.IRON_CHESTPLATE, 1), new ItemStack(Material.IRON_LEGGINGS, 1), new ItemStack(Material.IRON_BOOTS, 1), bow, new ItemStack(Material.ARROW, 1) };
+	}
 	
 	@Override
 	public ItemStack[] getItemStack() {
@@ -38,7 +49,7 @@ public class KitDemo extends Kit {
 
 	@Override
 	public int getRequiredPriority() {
-		return 75;
+		return 300;
 	}
 
 }

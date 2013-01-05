@@ -24,12 +24,23 @@
 package com.jkush321.autowalls.kits;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
 
-public class KitDemo extends Kit {
+public class KitExcavator extends Kit {
 
-	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.REDSTONE_TORCH_ON, 8), new ItemStack(Material.TNT, 6) };
+	ItemStack[] contents;
+	
+	public KitExcavator()
+	{
+		ItemStack shovel = new ItemStack(Material.DIAMOND_SPADE, 1);
+		shovel.addUnsafeEnchantment(Enchantment.DIG_SPEED, 5);
+		ItemStack hat = new ItemStack(Material.IRON_HELMET, 1);
+		ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
+		
+		contents = new ItemStack[]{ shovel, hat, chest };
+	}
 	
 	@Override
 	public ItemStack[] getItemStack() {
@@ -38,7 +49,7 @@ public class KitDemo extends Kit {
 
 	@Override
 	public int getRequiredPriority() {
-		return 75;
+		return 5;
 	}
 
 }

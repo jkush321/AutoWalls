@@ -24,12 +24,26 @@
 package com.jkush321.autowalls.kits;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
 
-public class KitDemo extends Kit {
+public class KitPyro2 extends Kit {
 
-	ItemStack[] contents = new ItemStack[]{ new ItemStack(Material.REDSTONE_TORCH_ON, 8), new ItemStack(Material.TNT, 6) };
+	ItemStack[] contents;
+	
+	public KitPyro2()
+	{
+		ItemStack chest = new ItemStack(Material.DIAMOND_CHESTPLATE, 1);
+		ItemStack legs = new ItemStack(Material.CHAINMAIL_LEGGINGS);
+		ItemStack helm = new ItemStack(Material.IRON_HELMET);
+		ItemStack fireCharges = new ItemStack(Material.FIREBALL, 64);
+		ItemStack lavaBucket = new ItemStack(Material.LAVA_BUCKET, 3);
+		chest.addUnsafeEnchantment(Enchantment.PROTECTION_FIRE, 5);
+		ItemStack fireSword = new ItemStack(Material.DIAMOND_SWORD, 1);
+		fireSword.addEnchantment(Enchantment.FIRE_ASPECT, 2);
+		contents = new ItemStack[]{ fireSword, helm, chest, legs, fireCharges, lavaBucket };
+	}
 	
 	@Override
 	public ItemStack[] getItemStack() {
@@ -38,7 +52,7 @@ public class KitDemo extends Kit {
 
 	@Override
 	public int getRequiredPriority() {
-		return 75;
+		return 300;
 	}
 
 }
