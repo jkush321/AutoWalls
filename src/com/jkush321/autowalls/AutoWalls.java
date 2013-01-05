@@ -273,7 +273,6 @@ public class AutoWalls extends JavaPlugin implements Listener {
 				if (config.getInt("votes.players." + p.getName()) >= earlyJoinPriority && !gameInProgress) { allowed = true; }
 				if (canJoin && !gameInProgress){ allowed = true; }
 				if (playing.size()<teamSize*4 && config.getInt("votes.players." + p.getName()) >= lateJoinPriority && WallDropper.time > 0) { allowed = true; }
-				//if (useSpout) { if (!SpoutStuff.hasSpout(p)){ p.sendMessage("§4---------------------------"); p.sendMessage("§4It is highly recomended you download SpoutCraft from get.spout.org - In the Launcher Set the Version to Latest. If you use SpoutCraft you get acess to tons of cool features you wont see otherwise.");p.sendMessage("§4---------------------------"); } }
 				if (!allowed)
 				{
 					cmdSender.sendMessage("§4You can not join the game at this time!");
@@ -779,6 +778,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 				orangeTeam.add(p);
 			}
 			playing.add(p);
+			p.setHealth(20);
+			p.setFoodLevel(20);
 			p.setAllowFlight(false);
 			p.setGameMode(GameMode.SURVIVAL);
 			for (Player pl : Bukkit.getOnlinePlayers())
@@ -866,6 +867,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		for (Player p : playing)
 		{
 			p.sendMessage("§eGood Luck!");
+			p.setHealth(20);
+			p.setFoodLevel(20);
 			if (KitManager.getKit(p) != null)
 			{
 				p.getInventory().addItem(KitManager.getKit(p).getItemStack());
