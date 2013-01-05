@@ -49,9 +49,4 @@ public class KitParatrooper extends Kit {
 		return 5;
 	}
 
-	@Override
-	public String getName() {
-		return "Paratrooper";
-	}
-
 }

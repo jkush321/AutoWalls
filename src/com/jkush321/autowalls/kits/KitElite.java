@@ -41,9 +41,4 @@ public class KitElite extends Kit {
 		return 250;
 	}
 
-	@Override
-	public String getName() {
-		return "Elite";
-	}
-
 }

@@ -51,9 +51,4 @@ public class KitPyro extends Kit {
 		return 75;
 	}
 
-	@Override
-	public String getName() {
-		return "Pyro";
-	}
-
 }

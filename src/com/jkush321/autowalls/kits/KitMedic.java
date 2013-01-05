@@ -41,9 +41,4 @@ public class KitMedic extends Kit {
 		return 10;
 	}
 
-	@Override
-	public String getName() {
-		return "Medic";
-	}
-
 }

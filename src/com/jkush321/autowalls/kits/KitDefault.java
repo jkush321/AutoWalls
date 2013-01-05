@@ -46,9 +46,4 @@ public class KitDefault extends Kit {
 		return "Default";
 	}
 
-	@Override
-	public boolean isDefault() {
-		return true;
-	}
-
 }

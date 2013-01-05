@@ -55,9 +55,4 @@ public class KitCactus extends Kit {
 		return 15;
 	}
 
-	@Override
-	public String getName() {
-		return "Cactus";
-	}
-
 }

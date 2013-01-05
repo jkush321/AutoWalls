@@ -41,9 +41,4 @@ public class KitWarrior2 extends Kit {
 		return 50;
 	}
 
-	@Override
-	public String getName() {
-		return "Warrior2";
-	}
-
 }

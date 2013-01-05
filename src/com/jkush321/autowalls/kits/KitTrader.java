@@ -51,9 +51,4 @@ public class KitTrader extends Kit {
 		return 10;
 	}
 
-	@Override
-	public String getName() {
-		return "Trader";
-	}
-
 }

@@ -41,9 +41,4 @@ public class KitBuilder extends Kit {
 		return 30;
 	}
 
-	@Override
-	public String getName() {
-		return "Builder";
-	}
-
 }

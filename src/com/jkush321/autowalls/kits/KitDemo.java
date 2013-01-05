@@ -41,9 +41,4 @@ public class KitDemo extends Kit {
 		return 75;
 	}
 
-	@Override
-	public String getName() {
-		return "Demo";
-	}
-
 }

@@ -41,9 +41,4 @@ public class KitFood extends Kit {
 		return 0;
 	}
 
-	@Override
-	public String getName() {
-		return "Food";
-	}
-
 }

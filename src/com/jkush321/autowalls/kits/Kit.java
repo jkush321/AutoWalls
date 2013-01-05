@@ -33,7 +33,7 @@ public class Kit {
 		return 0;
 	}
 	public String getName(){
-		return null;
+		return this.getClass().getSimpleName().substring(3);
 	}
 	public boolean isDefault(){
 		return false;
