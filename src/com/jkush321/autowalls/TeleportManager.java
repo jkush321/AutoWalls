@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class TeleportManager {
@@ -58,12 +59,12 @@ public class TeleportManager {
 			public void run(){
 				if (AutoWalls.getTicksFromLastEvent(TeleportManager.getPlayer(this)) * 20 >= AutoWalls.secondsBeforeTeleport)
 				{
-					TeleportManager.getPlayer(this).sendMessage("§eYou are being teleported to " + TeleportManager.getTarget(TeleportManager.getPlayer(this)).getDisplayName());
+					TeleportManager.getPlayer(this).sendMessage(ChatColor.YELLOW + "You are being teleported to " + TeleportManager.getTarget(TeleportManager.getPlayer(this)).getDisplayName());
 					TeleportManager.getPlayer(this).teleport(TeleportManager.getTarget(TeleportManager.getPlayer(this)));
 				}
 				else
 				{
-					TeleportManager.getPlayer(this).sendMessage("§cYour previous teleport was cancelled.");
+					TeleportManager.getPlayer(this).sendMessage(ChatColor.RED + "Your previous teleport was cancelled.");
 				}
 			};
 		};
