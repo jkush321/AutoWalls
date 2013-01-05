@@ -32,6 +32,7 @@ import java.io.OutputStream;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class VoteResult implements Runnable {
@@ -39,9 +40,9 @@ public class VoteResult implements Runnable {
 	{
 		try {
 			AutoWalls.voting = false;
-			Bukkit.broadcastMessage("§4The votes are in...");
-			Bukkit.broadcastMessage("§31 - " + AutoWalls.votedFor1.size());
-			Bukkit.broadcastMessage("§32 - " + AutoWalls.votedFor2.size());
+			Bukkit.broadcastMessage(ChatColor.DARK_RED + "The votes are in...");
+			Bukkit.broadcastMessage(ChatColor.RED + "1 - " + AutoWalls.votedFor1.size());
+			Bukkit.broadcastMessage(ChatColor.RED + "2 - " + AutoWalls.votedFor2.size());
 			Thread.sleep(2000);
 			if (AutoWalls.votedFor1.size()!=AutoWalls.votedFor2.size())
 			{
@@ -66,7 +67,7 @@ public class VoteResult implements Runnable {
 			
 			for (Player p : Bukkit.getOnlinePlayers())
 			{
-				p.kickPlayer("§cNext game: The Walls " + (AutoWalls.config.getInt("next-map")) + " §bReconnect and type /join to get in a game.");
+				p.kickPlayer(ChatColor.RED + "Next game: The Walls " + (AutoWalls.config.getInt("next-map")) + ChatColor.AQUA + "Reconnect and type /join to get in a game.");
 			}
 			Bukkit.shutdown();
 		}

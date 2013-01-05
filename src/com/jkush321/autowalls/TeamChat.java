@@ -28,6 +28,7 @@ import java.util.List;
 import static com.jkush321.autowalls.AutoWalls.*;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class TeamChat {
@@ -72,7 +73,7 @@ public class TeamChat {
 			for (Player p : Bukkit.getOnlinePlayers())
 			{
 				if (!playing.contains(p) || redTeam.contains(p))
-					p.sendMessage("§e<§cRedChat§e>§f" + message);
+					p.sendMessage(ChatColor.YELLOW + "<" + ChatColor.RED + "RedChat" + ChatColor.YELLOW + ">" + ChatColor.GRAY + message);
 			}
 		}
 		else if (team==1)
@@ -80,7 +81,7 @@ public class TeamChat {
 			for (Player p : Bukkit.getOnlinePlayers())
 			{
 				if (!playing.contains(p) || blueTeam.contains(p))
-					p.sendMessage("§e<§cBlueChat§e>§f" + message);
+					p.sendMessage(ChatColor.YELLOW + "<" + ChatColor.RED + "BlueChat" + ChatColor.YELLOW + ">" + ChatColor.GRAY + message);
 			}
 		}
 		else if (team==2)
@@ -88,7 +89,7 @@ public class TeamChat {
 			for (Player p : Bukkit.getOnlinePlayers())
 			{
 				if (!playing.contains(p) || greenTeam.contains(p))
-					p.sendMessage("§e<§cGreenChat§e>§f" + message);
+					p.sendMessage(ChatColor.YELLOW + "<" + ChatColor.RED + "GreenChat" + ChatColor.YELLOW + ">" + ChatColor.GRAY + message);
 			}
 		}
 		else if (team==3)
@@ -96,7 +97,7 @@ public class TeamChat {
 			for (Player p : Bukkit.getOnlinePlayers())
 			{
 				if (!playing.contains(p) || orangeTeam.contains(p))
-					p.sendMessage("§e<§cOrangeChat§e>§f" + message);
+					p.sendMessage(ChatColor.YELLOW + "<" + ChatColor.RED + "OrangeChat" + ChatColor.YELLOW + ">" + ChatColor.GRAY + message);
 			}
 		}
 		else if (team==4)
@@ -104,12 +105,12 @@ public class TeamChat {
 			for (Player p : Bukkit.getOnlinePlayers())
 			{
 				if (!playing.contains(p))
-					p.sendMessage("§e<§cSpecChat§e>§f" + message);
+					p.sendMessage(ChatColor.YELLOW + "<" + ChatColor.RED + "SpecChat" + ChatColor.YELLOW + ">" + ChatColor.GRAY + message);
 			}
 		}
 		else
 		{
-			Bukkit.broadcastMessage("§e<§cGlobalChat§e>§f" + message);
+			Bukkit.broadcastMessage(ChatColor.YELLOW + "<" + ChatColor.RED + "GlobalChat" + ChatColor.YELLOW + ">" + ChatColor.GRAY + message);
 		}
 	}
 }
