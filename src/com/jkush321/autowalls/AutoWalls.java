@@ -602,13 +602,13 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		}
 		else if (cmd.getLabel().equalsIgnoreCase("forcestart"))
 		{
-			if (playing.size() > 1) {
+			if (playing.size() >= 2 && !gameInProgress && JoinTimer.timeleft <= 0) {
 				Bukkit.broadcastMessage("§4FORCE STARTING GAME");
 				startGame();
 			}
 			else
 			{
-				cmdSender.sendMessage("§7There have to be at least 2 players!");
+				cmdSender.sendMessage("§7There have to be at least 2 players, and the game can not be started yet, and the join timer must be over!");
 			}
 			return true;
 		}
