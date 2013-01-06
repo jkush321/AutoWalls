@@ -1,0 +1,131 @@
+name: AutoWalls
+main: com.jkush321.autowalls.AutoWalls
+version: 1.0
+commands:
+  join:
+    description: Joins a team
+    usage: /join [Red|Blue|Green|Orange]
+    permission: walls.player
+    permission-message: You can't do that
+  leave:
+    description: Leaves your team
+    usage: /leave
+    permission: walls.player
+    permission-message: You can't do that
+  playing:
+    description: Who is playing
+    usage: /playing
+    permission: walls.player
+    permission-message: You can't do that
+  time:
+    description: Time left before walls drop
+    usage: /time
+    permission: walls.player
+    permission-message: You can't do that
+  team:
+    description: See whos on your team
+    usage: /team
+    permission: walls.player
+    permission-message: You can't do that
+  tp:
+    description: Teleport to player
+    usage: /tp playername
+    permission: walls.player
+    permission-message: You can't do that
+  pri:
+    description: Gives priority
+    usage: /pri name amount
+    permission: walls.op
+    permission-message: No.
+  tpplayers:
+    description: Teleports players to you
+    usage: /tpplayers
+    permission: walls.op
+    permission-message: No.
+  tpspecs:
+    description: Teleports spectators to you
+    usage: /tpspecs
+    permission: walls.op
+    permission-message: No.
+  tpall:
+    description: Teleports everyone to you
+    usage: /tpall
+    permission: walls.op
+    permission-message: No.
+  tphere:
+    description: Teleports everyone to you
+    usage: /tphere <name>
+    permission: walls.op
+    permission-message: No.
+  tc:
+    description: Toggles team chat
+    usage: /tc
+    permission: walls.player
+    permission-message: No.
+  tell:
+    description: Sends a private message
+    usage: /tell [Player] [Message]
+    permission: walls.player
+    permission-message: No.
+  t:
+    description: Sends a private message
+    usage: /t [Player] [Message]
+    permission: walls.player
+    permission-message: No.
+  me:
+    description: Used to describe what you're doing
+    usage: /me [Message]
+    permission: walls.player
+    permission-message: No.
+  forcestart:
+    description: Only used when nessecary
+    usage: /forcestart
+    permission: walls.op
+    permission-message: No.
+  day:
+    description: Sets it to daytime
+    usage: /day
+    permission: walls.op
+    permission-messasge: No.
+  night:
+    description: Sets it to night
+    usage: /night
+    permission: walls.op
+    permission-message: No.
+  yell:
+    description: Yells outloud
+    usage: /yell [message]
+    permission: walls.player
+    permission-message: No.
+  forcedrop:
+    description: Force drops the walls
+    usage: /forcedrop
+    permission: walls.op
+    permission-message: No.
+  forceend:
+    descritpion: Ends the round
+    usage: /forceend
+    permission: walls.op
+    permission-message: No.
+  fly:
+    description: Lets you soar accross la sky
+    usage: /fly
+    permission: walls.player
+    permission-message: Sorry, can't do that
+  kit:
+    description: Lets you choose a kit
+    usage: /kit
+    permission: walls.player
+    permission-message: Sorry, can't allow that command
+  prefix:
+    description: Set a player prefix
+    usage: /prefix <player> <prefix>
+    permission: walls.op
+    permission-message: Sorry, you do not have permission to do that!
+permissions:
+  walls.player:
+    description: Player of walls
+    default: true
+  walls.op:
+    description: Operator of walls
+    default: op
