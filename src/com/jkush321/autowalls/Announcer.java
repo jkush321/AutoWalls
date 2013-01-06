@@ -40,7 +40,7 @@ public class Announcer implements Runnable {
 		{
 			try {
 				
-				Bukkit.broadcastMessage(ChatColor.DARK_RED + "[" + AutoWalls.announcerName + "]" + ChatColor.DARK_AQUA + messages.get(message));
+				Bukkit.broadcastMessage(ChatColor.DARK_RED + "[" + AutoWalls.announcerName + "] " + ChatColor.DARK_AQUA + messages.get(message));
 				message++;
 				if (message==messages.size()) message=0;
 				Thread.sleep(60000);

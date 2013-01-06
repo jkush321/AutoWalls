@@ -41,27 +41,27 @@ public class JoinTimer implements Runnable {
 				if (timeleft>=10 && timeleft % 10 == 0)
 				{
 					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + " in " + timeleft + " seconds!" + ChatColor.DARK_RED + " Make sure to use /kit !!!!");
-					Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "You can " + ChatColor.YELLOW + "/join " + ChatColor.DARK_GREEN + " any time if you have " + AutoWalls.earlyJoinPriority + " or more priority!");
+					Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "You can " + ChatColor.YELLOW + "/join " + ChatColor.DARK_GREEN + "at any time if you have " + AutoWalls.earlyJoinPriority + " or more priority!");
 				}
 				if (timeleft==5)
 				{
-					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + "  in " + timeleft + " seconds!" + ChatColor.DARK_RED + "Make sure to use /kit !!!!");
+					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + " in " + timeleft + " seconds!" + ChatColor.DARK_RED + " Make sure to use /kit !!!!");
 				}
 				if (timeleft==4)
 				{
-					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + "  in " + timeleft + " seconds!" + ChatColor.DARK_RED + "Make sure to use /kit !!!!");
+					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + " in " + timeleft + " seconds!" + ChatColor.DARK_RED + " Make sure to use /kit !!!!");
 				}
 				if (timeleft==3)
 				{
-					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + "  in " + timeleft + " seconds!" + ChatColor.DARK_RED + "Make sure to use /kit !!!!");
+					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + " in " + timeleft + " seconds!" + ChatColor.DARK_RED + " Make sure to use /kit !!!!");
 				}
 				if (timeleft==2)
 				{
-					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + "  in " + timeleft + " seconds!" + ChatColor.DARK_RED + "Make sure to use /kit !!!!");
+					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + " in " + timeleft + " seconds!" + ChatColor.DARK_RED + " Make sure to use /kit !!!!");
 				}
 				if (timeleft==1)
 				{
-					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + "  in " + timeleft + " second!" + ChatColor.DARK_RED + "Make sure to use /kit !!!!");
+					Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "You can " + ChatColor.YELLOW + "/join" + ChatColor.DARK_AQUA + " in " + timeleft + " second!" + ChatColor.DARK_RED + " Make sure to use /kit !!!!");
 				}
 				if (timeleft==0)
 				{
