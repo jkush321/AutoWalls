@@ -10,7 +10,7 @@ I know this code is messy, it was origingally a small personally project and exp
 
 If you would like to try to support the project, you can submit a pull request, but it may be denied
 
-The official download and more information of this CraftBukkit plugin is located at [The Official Page](bit.ly/AutoWalls)
+The official download and more information of this CraftBukkit plugin is located at [The Official Page](http://bit.ly/AutoWalls)
 ---
 
 by jkush321
