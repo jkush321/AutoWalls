@@ -24,6 +24,7 @@
 package com.jkush321.autowalls;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -154,7 +155,7 @@ public class WallDropper implements Runnable {
 	
 	public void announce(String whatToSay, int time, String end)
 	{
-		Bukkit.broadcastMessage("§4" + whatToSay + " §e" + time + "§4 " + end);
+		Bukkit.broadcastMessage(ChatColor.DARK_RED + whatToSay + " " + ChatColor.YELLOW + time + ChatColor.DARK_RED + " " + end);
 	}
 	
 	public void dropWalls()
@@ -176,7 +177,7 @@ public class WallDropper implements Runnable {
 			new Location(AutoWalls.playing.get(0).getWorld(), 285, 110, -799).getBlock().setType(Material.BEDROCK);
 			new Location(AutoWalls.playing.get(0).getWorld(), 341, 110, -731).getBlock().setType(Material.BEDROCK);
 			
-			Bukkit.broadcastMessage("§4DOWN WITH THE WALLS");
+			Bukkit.broadcastMessage(ChatColor.DARK_RED + "DOWN WITH THE WALLS");
 		}
 		else
 		{
@@ -189,7 +190,7 @@ public class WallDropper implements Runnable {
 			}
 			new Location(AutoWalls.playing.get(0).getWorld(), -794, 20, -173).getBlock().setType(Material.AIR);
 			
-			Bukkit.broadcastMessage("§4DOWN WITH THE WALLS");
+			Bukkit.broadcastMessage(ChatColor.DARK_RED + "DOWN WITH THE WALLS");
 		}
 	}
 
