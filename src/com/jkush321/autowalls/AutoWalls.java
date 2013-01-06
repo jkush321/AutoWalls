@@ -124,12 +124,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 	public final static String version = "1.0r2";
 	public static int earlyJoinPriority, lateJoinPriority;
 	public static boolean lateJoins;
+	public static boolean preventFireBeforeWallsFall;
 
-	// TODO good pvp support
-	// Fixed a bug for people not on Spout
-	// Fixed a bug for people on Spout
-	// Added vote-link in config
-	
 	public void onEnable()
 	{
 		plugin = this;
@@ -160,6 +156,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		config.addDefault("early-join-priority", 1);
 		config.addDefault("late-join-priority", 25);
 		config.addDefault("late-joins", true);
+		config.addDefault("prevent-fire-before-walls-fall", true);
 		
 		config.options().copyDefaults(true);
 	    saveConfig();
@@ -183,6 +180,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 	    earlyJoinPriority = config.getInt("early-join-priority");
 	    lateJoinPriority = config.getInt("late-join-priority");
 	    lateJoins = config.getBoolean("late-joins");
+	    preventFireBeforeWallsFall = config.getBoolean("prevent-fire-before-walls-fall");
 	    
 	    if (mapNumber == 1)
 	    {	
@@ -824,6 +822,11 @@ public class AutoWalls extends JavaPlugin implements Listener {
 				
 				p.sendMessage(ChatColor.YELLOW + "Good Luck!");
 			}
+			p.setHealth(20);
+			p.setFoodLevel(20);
+			p.setExp(0);
+			p.setLevel(0);
+			p.setNoDamageTicks(60);
 		}
 	}
 	public void leaveTeam(Player p)
@@ -1317,6 +1320,11 @@ public class AutoWalls extends JavaPlugin implements Listener {
 								}
 							}
 						}
+					}
+					if (e.getPlayer().getItemInHand().getType() != Material.FLINT_AND_STEEL && e.getPlayer().getItemInHand().getType() == Material.FIREBALL && WallDropper.time > 0 && preventFireBeforeWallsFall)
+					{
+						e.getPlayer().sendMessage(ChatColor.DARK_RED + "You can't place fire until the walls have fallen!");
+						e.setCancelled(true);
 					}
 				}
 			}
