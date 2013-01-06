@@ -24,7 +24,6 @@
 package com.jkush321.autowalls.kits;
 
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
 

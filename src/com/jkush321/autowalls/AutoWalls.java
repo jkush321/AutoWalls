@@ -19,7 +19,6 @@
  * 
  * For more information visit http://bit.ly/AutoWalls
  * 
- *
  */
 
 package com.jkush321.autowalls;
@@ -316,9 +315,12 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		{
 			if (cmdSender instanceof Player)
 			{
-				if (playing.contains((Player) cmdSender)) Bukkit.broadcastMessage("§e" + cmdSender.getName() + " §4has left the game!");
-				((Player) cmdSender).setHealth(0);
-				leaveTeam((Player) cmdSender);
+				if (playing.contains((Player) cmdSender)){
+					Bukkit.broadcastMessage("§e" + cmdSender.getName() + " §4has left the game!");
+					((Player) cmdSender).setHealth(0);
+					leaveTeam((Player) cmdSender);
+				}
+				else cmdSender.sendMessage("§4You aren't on a time");
 			}
 			return true;
 		}
