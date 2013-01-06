@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
 public class Announcer implements Runnable {
 	
@@ -39,7 +40,7 @@ public class Announcer implements Runnable {
 		{
 			try {
 				
-				Bukkit.broadcastMessage("§4[" + AutoWalls.announcerName + "] §3" + messages.get(message));
+				Bukkit.broadcastMessage(ChatColor.DARK_RED + "[" + AutoWalls.announcerName + "]" + ChatColor.DARK_AQUA + messages.get(message));
 				message++;
 				if (message==messages.size()) message=0;
 				Thread.sleep(60000);
