@@ -1135,7 +1135,6 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			if (e.getBlock().getX()<286) e.setCancelled(true);
 			if (e.getBlock().getZ()>-731) e.setCancelled(true);
 			if (e.getBlock().getY() > 138) {e.setCancelled(true); e.getPlayer().sendMessage(ChatColor.RED + "You can't build over the heigt limit. This prevents getting over walls."); }
-			if (e.getBlockAgainst().getType() == Material.SAND || e.getBlockAgainst().getType() == Material.GRAVEL || e.getBlockAgainst().getType() == Material.BEDROCK) e.setCancelled(true);
 		}
 		else
 		{
@@ -1148,7 +1147,6 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			if (e.getBlock().getX()>-725) e.setCancelled(true);
 			if (e.getBlock().getZ()<-243) e.setCancelled(true);
 			if (e.getBlock().getY() > 94) {e.setCancelled(true); e.getPlayer().sendMessage(ChatColor.RED + "You can't build over the heigt limit. This prevents getting over walls."); }
-			if (e.getBlockAgainst().getType() == Material.SAND || e.getBlockAgainst().getType() == Material.GRAVEL || e.getBlockAgainst().getType() == Material.BEDROCK) e.setCancelled(true);
 		}
 	}
 	/*@EventHandler
