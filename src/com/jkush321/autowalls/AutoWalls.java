@@ -53,6 +53,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPistonExtendEvent;
 import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
@@ -159,7 +160,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		config.addDefault("prevent-fire-before-walls-fall", true);
 		
 		config.options().copyDefaults(true);
-	    saveConfig();
+	    saveConfig();	    
 	    
 	    announcerName = config.getString("announcer-name");
 	    mapNumber = config.getInt("next-map");
@@ -1294,6 +1295,14 @@ public class AutoWalls extends JavaPlugin implements Listener {
 	@EventHandler (priority = EventPriority.HIGHEST)
 	public void onInteract(PlayerInteractEvent e)
 	{
+		if (e.getAction() == Action.RIGHT_CLICK_BLOCK)
+		{
+			if (e.getClickedBlock().getType() == Material.SIGN || e.getClickedBlock().getType() == Material.SIGN_POST)
+			{
+				Sign s = (Sign) e.getClickedBlock().getState();
+				SignUI.onClick(e.getPlayer(), s.getLine(0), s.getLine(1), s.getLine(2), s.getLine(3));
+			}
+		}
 		if (e.getPlayer().hasPermission("walls.op")) { e.setCancelled(false); return; }
 		if ((e.getPlayer().getLocation().getBlockY() > 139 && mapNumber == 1) || (e.getPlayer().getLocation().getBlockY() > 125 && mapNumber == 2))
 		{
@@ -1491,5 +1500,14 @@ public class AutoWalls extends JavaPlugin implements Listener {
 	public void onPlayerMove(PlayerMoveEvent e)
 	{
 		setLastEventToNow(e.getPlayer());
+	}
+	@EventHandler
+	public void onSignUpdate(SignChangeEvent e)
+	{
+		if (ChatColor.stripColor(e.getLine(0).trim()).equalsIgnoreCase("[Join]") && !e.getPlayer().hasPermission("walls.op"))
+		{
+			e.setCancelled(true);
+			e.getPlayer().sendMessage(ChatColor.RED + "No placing special signs!");
+		}
 	}
 }
