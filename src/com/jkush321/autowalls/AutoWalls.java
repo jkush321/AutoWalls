@@ -325,6 +325,37 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		}
 		else if (cmd.getLabel().equalsIgnoreCase("playing"))
 		{
+			if (!(cmdSender instanceof Player)) {
+				//If sent from console do...
+				
+				cmdSender.sendMessage(ChatColor.GRAY + "There are " + playing.size() + " people playing");
+				String s = (ChatColor.GRAY + "Red: " + ChatColor.WHITE);
+				for (Player pl : redTeam)
+				{
+					s+=pl.getName() + ", ";
+				}
+				cmdSender.sendMessage(s.substring(0,s.length()-2));
+				s=(ChatColor.GRAY + "Blue: " + ChatColor.WHITE);
+				for (Player pl : blueTeam)
+				{
+					s+=pl.getName() + ", ";
+				}
+				cmdSender.sendMessage(s.substring(0,s.length()-2));
+				s=(ChatColor.GRAY + "Green: " + ChatColor.WHITE);
+				for (Player pl : greenTeam)
+				{
+					s+=pl.getName() + ", ";
+				}
+				cmdSender.sendMessage(s.substring(0,s.length()-2));
+				s=(ChatColor.GRAY + "Orange: " + ChatColor.WHITE);
+				for (Player pl : orangeTeam)
+				{
+					s+=pl.getName() + ", ";
+				}
+				cmdSender.sendMessage(s.substring(0,s.length()-2));
+				return true;
+				
+			} else {
 			Player p = (Player) cmdSender;
 			p.sendMessage(ChatColor.GRAY + "There are " + playing.size() + " people playing");
 			String s = (ChatColor.GRAY + "Red: " + ChatColor.WHITE);
@@ -352,6 +383,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			}
 			p.sendMessage(s.substring(0,s.length()-2));
 			return true;
+			}
 		}
 		else if (cmd.getLabel().equalsIgnoreCase("time"))
 		{
