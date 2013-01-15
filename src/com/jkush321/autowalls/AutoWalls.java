@@ -768,7 +768,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 				saveConfig();
 				if (Bukkit.getPlayer(playerName).isOnline() && Bukkit.getPlayer(playerName) != null)
 				{
-					if (config.isSet("prefix." + Bukkit.getPlayer(playerName).getName())) Bukkit.getPlayer(playerName).setDisplayName(config.getString("prefix." + Bukkit.getPlayer(playerName).getName()).replace("&", "§").replace("{pri}", config.getInt("votes.players." + Bukkit.getPlayer(playerName).getName())+"") + Bukkit.getPlayer(playerName).getName() + ChatColor.WHITE);
+					if (config.isSet("prefix." + Bukkit.getPlayer(playerName).getName())) Bukkit.getPlayer(playerName).setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getString("prefix." + Bukkit.getPlayer(playerName).getName()).replace("{pri}", config.getInt("votes.players." + Bukkit.getPlayer(playerName).getName())+"") + Bukkit.getPlayer(playerName).getName() + ChatColor.WHITE));
 				}
 				cmdSender.sendMessage(ChatColor.YELLOW + "Set " + playerName + "'s prefix to " + ChatColor.WHITE + "\"" + fullPrefix + ChatColor.WHITE + "\"");
 			}
@@ -942,7 +942,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "Winning Players:  "+ ChatColor.DARK_GREEN + players);
 			try { Thread.sleep(1000); } catch (Exception e) { }
 			Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "It is time to vote for the next map!");
-			Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "1 - The Walls   - by Hypixel - Modified by staff team");
+			Bukkit.broadcastMessage(ChatColor.YELLOW + "1 - The Walls   - by Hypixel - Modified by staff team");
 			Bukkit.broadcastMessage(ChatColor.YELLOW + "2 - The Walls 2 - by Hypixel - Modified by staff team");
 			Bukkit.broadcastMessage(ChatColor.GRAY + "Type the number you want in chat. Vote will last 30 seconds");
 			
@@ -1384,24 +1384,24 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		String message = "AutoWalls Server";
 		if (!gameInProgress && !gameOver)
 		{
-			message="§2Getting ready to start!";
+			message=(ChatColor.DARK_GREEN + "Getting ready to start!");
 		}
 		else if (gameInProgress && WallDropper.time > 0)
 		{
 			int mins = WallDropper.time / 60;
 			int secs = WallDropper.time % 60;
-			message="§4Walls drop in §e" + mins + " §4mins, §e" + secs + " §4secs!";
+			message=(ChatColor.DARK_GREEN + "Walls drop in "+ ChatColor.YELLOW + mins + ChatColor.DARK_RED + " mins, " + ChatColor.YELLOW + secs + ChatColor.DARK_RED + " secs!");
 		}
 		else if (gameInProgress)
 		{
-			message= "§e" + playing.size() + " §4players alive!";
+			message=(ChatColor.YELLOW + "" + playing.size() + ChatColor.DARK_RED + " players alive!");
 		}
 		else if (gameOver && !voting)
 		{
-			message="§2Game has ended!";
+			message=ChatColor.DARK_GREEN + "Game has ended!";
 		}
 		else {
-			message="§3Voting for the next map!";
+			message=ChatColor.DARK_AQUA + "Voting for the next map!";
 		}
 		e.setMotd(message);
 	}
