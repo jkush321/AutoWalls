@@ -275,7 +275,6 @@ public class AutoWalls extends JavaPlugin implements Listener {
 				if (config.getInt("votes.players." + p.getName()) >= earlyJoinPriority && !gameInProgress) { allowed = true; }
 				if (canJoin && !gameInProgress){ allowed = true; }
 				if (playing.size()<teamSize*4 && config.getInt("votes.players." + p.getName()) >= lateJoinPriority && WallDropper.time > 0) { allowed = true; }
-				//if (useSpout) { if (!SpoutStuff.hasSpout(p)){ p.sendMessage("§4---------------------------"); p.sendMessage("§4It is highly recomended you download SpoutCraft from get.spout.org - In the Launcher Set the Version to Latest. If you use SpoutCraft you get acess to tons of cool features you wont see otherwise.");p.sendMessage("§4---------------------------"); } }
 				if (!allowed)
 				{
 					cmdSender.sendMessage(ChatColor.DARK_RED + "You can not join the game at this time!");
@@ -998,7 +997,6 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			if (TeamChat.teamChatting.contains(e.getEntity())) TeamChat.teamChatting.remove(e.getEntity());
 			if (playing.size()>1)
 				e.setDeathMessage(ChatColor.YELLOW + e.getEntity().getName() + ChatColor.DARK_RED + " " + e.getDeathMessage().split(e.getEntity().getName() + " ")[1] + ChatColor.DARK_GREEN + " " + playing.size() + " Players Remain");
-			//else e.setDeathMessage("§e" + e.getEntity().getName() + " §4" + e.getDeathMessage().split(e.getEntity().getName() + " ")[1] + " §2Just " + playing.get(0) + " is left!");
 			createGrave(e.getEntity().getLocation(), e.getEntity().getName());
 			checkStats();
 			Tags.refreshPlayer(e.getEntity());
@@ -1371,7 +1369,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			}
 		}
 		if (!gameInProgress) e.setCancelled(true);
-		if (!playing.contains(e.getPlayer())) {e.setCancelled(true);/*e.getPlayer().sendMessage("§cYou are spectating and can not do that!");*/}
+		if (!playing.contains(e.getPlayer())) {e.setCancelled(true);}
 	}
 	@EventHandler(priority=EventPriority.HIGHEST)
 	public void onEntitySpawn(CreatureSpawnEvent e)
