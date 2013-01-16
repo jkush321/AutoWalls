@@ -1572,5 +1572,10 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(ChatColor.RED + "No placing special signs!");
 		}
+		if (ChatColor.stripColor(e.getLine(0).trim()).equalsIgnoreCase("[Kit]") && !e.getPlayer().hasPermission("walls.op"))
+		{
+			e.setCancelled(true);
+			e.getPlayer().sendMessage(ChatColor.RED + "No placing special signs!");
+		}
 	}
 }

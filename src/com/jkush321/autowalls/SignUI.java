@@ -17,5 +17,16 @@ public class SignUI {
 				p.chat("/join " + ChatColor.stripColor(line2.trim()).toLowerCase());
 			}
 		}
+		else if (ChatColor.stripColor(line1.trim()).equalsIgnoreCase("[Kit]"))
+		{
+			if (ChatColor.stripColor(line2.trim()).equals(""))
+			{
+				p.sendMessage("This is an invalid sign.");
+			}
+			else
+			{
+				p.chat("/kit " + ChatColor.stripColor(line2.trim()).toLowerCase());
+			}
+		}
 	}
 }
