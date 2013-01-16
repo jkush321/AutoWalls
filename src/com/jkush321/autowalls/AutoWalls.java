@@ -158,6 +158,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		config.addDefault("late-join-priority", 25);
 		config.addDefault("late-joins", true);
 		config.addDefault("prevent-fire-before-walls-fall", true);
+		config.addDefault("max-color-cycler-time", 120);
 		
 		config.options().copyDefaults(true);
 	    saveConfig();	    
@@ -182,6 +183,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 	    lateJoinPriority = config.getInt("late-join-priority");
 	    lateJoins = config.getBoolean("late-joins");
 	    preventFireBeforeWallsFall = config.getBoolean("prevent-fire-before-walls-fall");
+	    ColorCycler.MAX_COLOR_TIME = config.getInt("max-color-cycler-time");
 	    
 	    if (mapNumber == 1)
 	    {	
@@ -245,6 +247,13 @@ public class AutoWalls extends JavaPlugin implements Listener {
 
 		dropper = new Thread(new WallDropper());
 		dropper.start();
+		
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable(){
+			public void run()
+			{
+				ColorCycler.tick();
+			}
+		}, 0L, 20L);
 		
 		KitManager.fillKits();
 		
@@ -1331,6 +1340,30 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			{
 				Sign s = (Sign) e.getClickedBlock().getState();
 				SignUI.onClick(e.getPlayer(), s.getLine(0), s.getLine(1), s.getLine(2), s.getLine(3));
+			}
+		}
+		if (playing.contains(e.getPlayer()) && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK))
+		{
+			if (e.getPlayer().getItemInHand() != null)
+			{
+				if (e.getPlayer().getItemInHand().getType() == Material.NETHER_STAR)
+				{
+					if (ColorCycler.colorTime.containsKey(e.getPlayer()))
+					{
+						if (ColorCycler.colorTime.get(e.getPlayer()) == 0)
+						{
+							e.getPlayer().sendMessage(ChatColor.RED + "Your ability to do that has worn off!");
+						}
+						else
+						{
+							ColorCycler.cycle(e.getPlayer());
+						}
+					}
+					else
+					{
+						ColorCycler.cycle(e.getPlayer());
+					}
+				}
 			}
 		}
 		if (e.getPlayer().hasPermission("walls.op")) { e.setCancelled(false); return; }

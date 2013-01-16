@@ -38,7 +38,7 @@ public class KitBuilder2 extends Kit {
 
 	@Override
 	public int getRequiredPriority() {
-		return 30;
+		return 50;
 	}
 
 }

@@ -23,9 +23,12 @@
 
 package com.jkush321.autowalls.kits;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
+
+import com.jkush321.autowalls.ItemUtils;
 
 
 public class KitPyro extends Kit {
@@ -36,8 +39,11 @@ public class KitPyro extends Kit {
 	{
 		ItemStack helm = new ItemStack(Material.DIAMOND_HELMET, 1);
 		helm.addEnchantment(Enchantment.PROTECTION_FIRE, 2);
+		
 		ItemStack fireSword = new ItemStack(Material.IRON_SWORD, 1);
 		fireSword.addEnchantment(Enchantment.FIRE_ASPECT, 1);
+		fireSword = ItemUtils.setItemName(fireSword, ChatColor.YELLOW + "Ignition Blade I");
+		
 		contents = new ItemStack[]{ helm, fireSword };
 	}
 	

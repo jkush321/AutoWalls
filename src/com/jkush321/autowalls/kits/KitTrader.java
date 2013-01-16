@@ -28,6 +28,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.SpawnEgg;
 
+import com.jkush321.autowalls.ItemUtils;
+
 
 public class KitTrader extends Kit {
 
@@ -36,8 +38,11 @@ public class KitTrader extends Kit {
 	public KitTrader()
 	{
 		ItemStack emerald = new ItemStack(Material.EMERALD, 32);
+		emerald = ItemUtils.setItemName(emerald, "Emerald Coin");
+		
 		SpawnEgg egg = new SpawnEgg();
 		egg.setSpawnedType(EntityType.VILLAGER);
+		
 		contents = new ItemStack[]{ emerald, egg.toItemStack(6) };
 	}
 	

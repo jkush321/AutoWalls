@@ -46,7 +46,7 @@ public class ColoredNames implements Listener {
 			{
 				event.setTag(ChatColor.DARK_GREEN + event.getNamedPlayer().getName());
 			}
+			if (ColorCycler.getFakeColor(event.getNamedPlayer()) != null) event.setTag(ColorCycler.getFakeColor(event.getNamedPlayer()) + event.getNamedPlayer().getName());
 		}
-		else if (event.getPlayer().isOp()) event.setTag(ChatColor.GRAY + event.getNamedPlayer().getName());
 	}
 }

@@ -51,12 +51,15 @@ public class KitManager {
 		kitList.add(new KitFood());
 		kitList.add(new KitFood2());
 		kitList.add(new KitGhost());
+		kitList.add(new KitGhost2());
+		kitList.add(new KitGhost3());
 		kitList.add(new KitMedic());
 		kitList.add(new KitMiner());
 		kitList.add(new KitParatrooper());
 		kitList.add(new KitPyro());
 		kitList.add(new KitPyro2());
 		kitList.add(new KitSmelter());
+		kitList.add(new KitSpy());
 		kitList.add(new KitTools());
 		kitList.add(new KitTrader());
 		kitList.add(new KitWarrior());

@@ -21,40 +21,33 @@
  * 
  */
 
-package com.jkush321.autowalls.kits;
 
-import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
+package com.jkush321.autowalls;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
-import com.jkush321.autowalls.ItemUtils;
-
-
-public class KitExcavator extends Kit {
-
-	ItemStack[] contents;
+public class ItemUtils {
+	public static ItemStack setItemName(ItemStack stack, String name){
+        ItemMeta m = stack.getItemMeta();
+        m.setDisplayName(name);
+        stack.setItemMeta(m);
+        return stack;
+    }
 	
-	public KitExcavator()
+	public static ItemStack setLore(ItemStack stack, String... lore)
 	{
-		ItemStack shovel = new ItemStack(Material.DIAMOND_SPADE, 1);
-		
-		shovel.addUnsafeEnchantment(Enchantment.DIG_SPEED, 5);
-		shovel = ItemUtils.setItemName(shovel, "The Digger");
-		
-		ItemStack hat = new ItemStack(Material.IRON_HELMET, 1);
-		ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-		
-		contents = new ItemStack[]{ shovel, hat, chest };
+		ItemMeta m = stack.getItemMeta();
+		List<String> loreList = new ArrayList<String>();
+		for (String s : lore)
+		{	
+			loreList.add(s);
+		}
+		m.setLore(loreList);
+		stack.setItemMeta(m);
+		return stack;
 	}
-	
-	@Override
-	public ItemStack[] getItemStack() {
-		return contents;
-	}
-
-	@Override
-	public int getRequiredPriority() {
-		return 5;
-	}
-
 }
