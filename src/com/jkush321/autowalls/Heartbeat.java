@@ -28,8 +28,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-
 public class Heartbeat implements Runnable {
 	public void run()
 	{
@@ -49,32 +47,6 @@ public class Heartbeat implements Runnable {
 				if (!response.trim().equals("Done.")) System.out.println("Abnormal: Heartbeat returned " + response);
 				
 				Thread.sleep(60000);
-				
-				url = new URL("http://infacraft.net/autowalls/version.txt");
-				br = new BufferedReader(new InputStreamReader(url.openConnection().getInputStream()));
-				s = "";
-				response = "";
-				while ((s=br.readLine()) != null)
-				{
-					response+=s;
-				}
-				
-				response=response.trim();
-				
-				if (!response.equals(AutoWalls.version)){
-					Bukkit.broadcast(ChatColor.DARK_RED + "Your AutoWalls (" + ChatColor.RED + "v:" + AutoWalls.version + ChatColor.DARK_RED + ") Is Outdated! Please Update To (" + ChatColor.RED + "v:" +response + ChatColor.DARK_RED + ")", "walls.op");
-					url = new URL("http://infacraft.net/autowalls/majorchanges.txt");
-					br = new BufferedReader(new InputStreamReader(url.openConnection().getInputStream()));
-					s = "";
-					response = "";
-					while ((s=br.readLine()) != null)
-					{
-						response+=s;
-					}
-					
-					response=response.trim();
-					Bukkit.broadcast(ChatColor.DARK_RED + "Major Changes: " + ChatColor.RED + response, "walls.op");
-				}
 				
 			}catch (Exception e) { System.out.println("Heartbeat error!"); e.printStackTrace(); }
 		}

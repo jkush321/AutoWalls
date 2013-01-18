@@ -1076,6 +1076,10 @@ public class AutoWalls extends JavaPlugin implements Listener {
 				p.hidePlayer(e.getPlayer());
 			}
 		}
+		if (e.getPlayer().hasPermission("walls.op"))
+		{
+			UpdateChecker.checkAndSendMessage(e.getPlayer());
+		}
 	}
 	public void checkStats()
 	{
