@@ -60,6 +60,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -75,6 +76,7 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -255,6 +257,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			}
 		}, 0L, 20L);
 		
+		Grenades.init();
 		KitManager.fillKits();
 		
 		if (Bukkit.getPluginManager().getPlugin("TagAPI")!= null)
@@ -1364,6 +1367,26 @@ public class AutoWalls extends JavaPlugin implements Listener {
 						ColorCycler.cycle(e.getPlayer());
 					}
 				}
+				else if (e.getPlayer().getItemInHand().getType() == Material.SNOW_BALL)
+				{
+					if (e.getPlayer().getItemInHand().getItemMeta().hasDisplayName())
+					{
+						if (e.getPlayer().getItemInHand().getItemMeta().getDisplayName().contains("Basic"))
+						{
+							e.getPlayer().setMetadata("last-grenade", new FixedMetadataValue(this, "basic"));
+							System.out.println("Meep");
+						}
+					}
+					else
+					{
+						if (e.getPlayer().hasMetadata("last-grenade")) e.getPlayer().removeMetadata("last-grenade", this);
+					}
+				}
+				else if (e.getPlayer().getItemInHand().getType() == Material.ENDER_PEARL && WallDropper.time > 0)
+				{
+					e.getPlayer().sendMessage(ChatColor.RED + "You can not do that until the walls fall!");
+					e.setCancelled(true);
+				}
 			}
 		}
 		if (e.getPlayer().hasPermission("walls.op")) { e.setCancelled(false); return; }
@@ -1459,7 +1482,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		}
 	}
 	@EventHandler
-	public void onArrowLand(ProjectileHitEvent e)
+	public void onProjectileLand(ProjectileHitEvent e)
 	{
 		if (e.getEntityType() == EntityType.ARROW && arrowLightning)
 		{
@@ -1480,6 +1503,14 @@ public class AutoWalls extends JavaPlugin implements Listener {
 					}
 				}
 			}
+		}
+		else if (e.getEntity().getType() == EntityType.SNOWBALL)
+		{
+			if (e.getEntity().hasMetadata("grenade-type"))
+			{
+				Grenades.handleLanding(e, e.getEntity());
+			}
+			//e.getEntity().getWorld().createExplosion(e.getEntity().getLocation(), .8F, true);
 		}
 	}
 	public void createGrave(Location l, String playername)
@@ -1514,11 +1545,9 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		List<Block> newList = new ArrayList<Block>();
 		newList.addAll(e.blockList());
 		
-		int i = -1;
 		for (Block b : newList)
 		{
-			i++;
-			if (b.getType() == Material.SAND || b.getType() == Material.GRAVEL) { e.blockList().remove(i); }
+			if (b.getType() == Material.SAND || b.getType() == Material.GRAVEL) { e.blockList().remove(b); }
 		}
 	}
 	@EventHandler
@@ -1576,6 +1605,14 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		{
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(ChatColor.RED + "No placing special signs!");
+		}
+	}
+	@EventHandler
+	public void onProjLaunch(ProjectileLaunchEvent e)
+	{
+		if (e.getEntity().getShooter().hasMetadata("last-grenade"))
+		{
+			e.getEntity().setMetadata("grenade-type", new FixedMetadataValue(this, e.getEntity().getShooter().getMetadata("last-grenade").get(0).asString()));
 		}
 	}
 }

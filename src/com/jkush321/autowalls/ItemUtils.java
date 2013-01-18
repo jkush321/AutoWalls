@@ -27,8 +27,10 @@ package com.jkush321.autowalls;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Color;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class ItemUtils {
 	public static ItemStack setItemName(ItemStack stack, String name){
@@ -48,6 +50,14 @@ public class ItemUtils {
 		}
 		m.setLore(loreList);
 		stack.setItemMeta(m);
+		return stack;
+	}
+	
+	public static ItemStack dyeArmor(ItemStack stack, int r, int g, int b)
+	{
+		LeatherArmorMeta lam = (LeatherArmorMeta)stack.getItemMeta();
+		lam.setColor(Color.fromRGB(r, g, b));
+		stack.setItemMeta(lam);
 		return stack;
 	}
 }

@@ -46,8 +46,10 @@ public class KitManager {
 		kitList.add(new KitDemo());
 		kitList.add(new KitElite());
 		kitList.add(new KitElite2());
+		kitList.add(new KitEnder());
 		kitList.add(new KitExcavator());
 		kitList.add(new KitFarmer());
+		kitList.add(new KitFirefighter());
 		kitList.add(new KitFood());
 		kitList.add(new KitFood2());
 		kitList.add(new KitGhost());
