@@ -124,7 +124,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 	public static int priorityPerDollar;
 	private static Map<Player, Long> lastEvent = new ConcurrentHashMap<>();
 	public static int secondsBeforeTeleport;
-	public final static String version = "1.0r2";
+	public final static String version = "1.1r1";
 	public static int earlyJoinPriority, lateJoinPriority;
 	public static boolean lateJoins;
 	public static boolean preventFireBeforeWallsFall;
@@ -136,7 +136,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(this, this);
 		config = getConfig();
 		
-		config.addDefault("votes.players.jkush321", 999999);
+		config.addDefault("votes.players.jkush321", 500);
+		config.addDefault("votes.players.example_player", 2);
 		config.addDefault("priorities", true);
 		config.addDefault("team-size", 4);
 		config.addDefault("next-map", 1);
@@ -527,8 +528,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 				config.set("votes.players." + pl.getName(), config.getInt("votes.players." + pl.getName()) + a);
 			}
 			else config.set("votes.players." + pl.getName(), a);
-			if (Bukkit.getPlayer(pl.getName()) != null) Bukkit.getPlayer(pl.getName()).sendMessage(ChatColor.YELLOW + "Your priority is now " + config.getInt("votes.players." + pl.getName()));
-			if (args.length==3) Bukkit.broadcastMessage(ChatColor.DARK_BLUE + pl.getName() + " Donated To Us And Now Has Login Priority of " + config.getInt("votes.players." + pl.getName()) + "! :D Thank you very much, " + pl.getName());
+			if (Bukkit.getPlayer(pl.getName()) != null && Bukkit.getPlayer(pl.getName()).isOnline()) Bukkit.getPlayer(pl.getName()).sendMessage(ChatColor.YELLOW + "Your priority is now " + config.getInt("votes.players." + pl.getName()));
+			if (args.length==3) Bukkit.broadcastMessage(ChatColor.AQUA + pl.getName() + " Donated To Us And Now Has Login Priority of " + config.getInt("votes.players." + pl.getName()) + "! :D Thank you very much, " + pl.getName());
 			saveConfig();
 			if (!pl.isOnline()) { cmdSender.sendMessage("Done!"); return true; }
 			pl.setDisplayName(pl.getName());
@@ -536,8 +537,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			if (config.isSet("votes.players." + pl.getName()) && config.getInt("votes.players." + pl.getName()) >= 250) { pl.setDisplayName(ChatColor.DARK_RED + pl.getName() + ChatColor.WHITE); }
 			if (config.getBoolean("priorities") == true)
 			{
-				if (config.isSet("votes.players." + pl.getName())) { pl.setDisplayName(ChatColor.YELLOW + "[" + config.getInt("votes.players." + pl.getName()) + "]" + ChatColor.GRAY + pl.getDisplayName()); }
-				else pl.setDisplayName(ChatColor.GRAY + "[0]" + pl.getDisplayName());
+				if (config.isSet("votes.players." + pl.getName())) { pl.setDisplayName(ChatColor.YELLOW + "[" + config.getInt("votes.players." + pl.getName()) + "]" + ChatColor.GRAY + pl.getDisplayName() + ChatColor.WHITE); }
+				else pl.setDisplayName(ChatColor.GRAY + "[0]" + pl.getDisplayName() + ChatColor.WHITE);
 			}
 			return true;
 		}
