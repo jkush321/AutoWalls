@@ -79,19 +79,19 @@ public class ColorCycler {
 		{
 			if (nextColor == ChatColor.DARK_RED)
 			{
-				p.sendMessage(ChatColor.GREEN + "You nameplate now appears as red");
+				p.sendMessage(ChatColor.GREEN + "Your nameplate now appears as red");
 			}
 			else if (nextColor == ChatColor.DARK_AQUA)
 			{
-				p.sendMessage(ChatColor.GREEN + "You nameplate now appears as blue");
+				p.sendMessage(ChatColor.GREEN + "Your nameplate now appears as blue");
 			}
 			else if (nextColor == ChatColor.DARK_GREEN)
 			{
-				p.sendMessage(ChatColor.GREEN + "You nameplate now appears as green");
+				p.sendMessage(ChatColor.GREEN + "Your nameplate now appears as green");
 			}
 			else
 			{
-				p.sendMessage(ChatColor.GREEN + "You nameplate now appears as orange");
+				p.sendMessage(ChatColor.GREEN + "Your nameplate now appears as orange");
 			}
 			setFakeColor(p, nextColor);
 		}
