@@ -331,7 +331,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 					((Player) cmdSender).setHealth(0);
 					leaveTeam((Player) cmdSender);
 				}
-				else cmdSender.sendMessage(ChatColor.DARK_RED + "You aren't on a time");
+				else cmdSender.sendMessage(ChatColor.DARK_RED + "You aren't on a team");
 			}
 			return true;
 		}
@@ -1028,7 +1028,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			else e.getPlayer().setDisplayName(ChatColor.WHITE + "[0]" + e.getPlayer().getDisplayName());
 		}
 		if (e.getPlayer().hasPermission("walls.op")) e.getPlayer().setDisplayName(ChatColor.DARK_BLUE + "[" + ChatColor.DARK_GREEN + "Admin" + ChatColor.DARK_BLUE + "]" + ChatColor.DARK_RED + e.getPlayer().getName() + ChatColor.GRAY + ChatColor.WHITE);
-		if (config.isSet("prefix." + e.getPlayer().getName())) e.getPlayer().setDisplayName(config.getString("prefix." + e.getPlayer().getName()).replace("&", "§").replace("{pri}", config.getInt("votes.players." + e.getPlayer().getName())+"") + e.getPlayer().getName() + ChatColor.WHITE);
+		if (config.isSet("prefix." + e.getPlayer().getName())) e.getPlayer().setDisplayName(config.getString("prefix." + e.getPlayer().getName()).replace("&", "ï¿½").replace("{pri}", config.getInt("votes.players." + e.getPlayer().getName())+"") + e.getPlayer().getName() + ChatColor.WHITE);
 		if (Bukkit.getOnlinePlayers().length == Bukkit.getMaxPlayers())
 		{
 			if (config.isSet("votes.players." + e.getPlayer().getName()) && (config.getBoolean("priorities") || config.getInt("votes.players." + e.getPlayer().getName()) > 5))
@@ -1210,17 +1210,17 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			config.set("votes.players." + v.getUsername(), config.getInt("votes.players." + v.getUsername()) + 1);
 		}
 		else config.set("votes.players." + v.getUsername(), 1);
-		if (Bukkit.getPlayer(v.getUsername()).isOnline()) Bukkit.getPlayer(v.getUsername()).sendMessage("§eThank's for voting! Your priority is now " + config.getInt("votes.players." + v.getUsername()));
-		Bukkit.broadcastMessage("§3" + v.getUsername() + " Voted For The Server On Planet Minecraft And Now Has Login Priority of " + config.getInt("votes.players." + v.getUsername()) + "! You Can Vote By Clicking This Link " + votelink + " It Is Easy, No Registration Required");
+		if (Bukkit.getPlayer(v.getUsername()).isOnline()) Bukkit.getPlayer(v.getUsername()).sendMessage("ï¿½eThank's for voting! Your priority is now " + config.getInt("votes.players." + v.getUsername()));
+		Bukkit.broadcastMessage("ï¿½3" + v.getUsername() + " Voted For The Server On Planet Minecraft And Now Has Login Priority of " + config.getInt("votes.players." + v.getUsername()) + "! You Can Vote By Clicking This Link " + votelink + " It Is Easy, No Registration Required");
 		saveConfig();
 		p.setDisplayName(p.getName());
-		if (config.isSet("votes.players." + p.getName()) && config.getInt("votes.players." + p.getName()) >= 20) { p.setDisplayName("§3" + p.getName() + "§f"); }
-		if (config.isSet("votes.players." + p.getName()) && config.getInt("votes.players." + p.getName()) >= 250) { p.setDisplayName("§4" + p.getName() + "§f"); }
+		if (config.isSet("votes.players." + p.getName()) && config.getInt("votes.players." + p.getName()) >= 20) { p.setDisplayName("ï¿½3" + p.getName() + "ï¿½f"); }
+		if (config.isSet("votes.players." + p.getName()) && config.getInt("votes.players." + p.getName()) >= 250) { p.setDisplayName("ï¿½4" + p.getName() + "ï¿½f"); }
 		
 		if (config.getBoolean("priorities") == true)
 		{
-			if (config.isSet("votes.players." + p.getName())) { p.setDisplayName("§e[" + config.getInt("votes.players." + p.getName()) + "]§7" + p.getDisplayName() + "§f"); }
-			else p.setDisplayName("§f[0]" +p.getDisplayName());
+			if (config.isSet("votes.players." + p.getName())) { p.setDisplayName("ï¿½e[" + config.getInt("votes.players." + p.getName()) + "]ï¿½7" + p.getDisplayName() + "ï¿½f"); }
+			else p.setDisplayName("ï¿½f[0]" +p.getDisplayName());
 		}
 	}*/
 	@EventHandler
@@ -1261,7 +1261,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			}
 			else
 			{
-				//e.getPlayer().sendMessage("§7There is a vote in progress, type a 1 or a 2.");
+				//e.getPlayer().sendMessage("ï¿½7There is a vote in progress, type a 1 or a 2.");
 			}
 			//e.setCancelled(true);
 		}
@@ -1319,7 +1319,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 					return;
 				}
 			}*/
-			e.setCancelled(true); //damager.sendMessage("§cIf you want to fight do it in the area above spawn");
+			e.setCancelled(true); //damager.sendMessage("ï¿½cIf you want to fight do it in the area above spawn");
 		}
 		
 		if (redTeam.contains(p) && redTeam.contains(damager)) { e.setCancelled(true); damager.sendMessage(ChatColor.RED + "You Can Not Team Kill!"); return; }
