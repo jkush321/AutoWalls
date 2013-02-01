@@ -488,7 +488,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 							else if (orangeTeam.contains(p) && orangeTeam.contains(p2)) p.teleport(p2);
 							else p.sendMessage(ChatColor.YELLOW + p2.getName() + " is not on your team!");
 						}
-						else p.sendMessage(ChatColor.DARK_AQUA + "his server has team teleporting disabled!");
+						else p.sendMessage(ChatColor.DARK_AQUA + "This server has team teleporting disabled!");
 					}
 				}
 				else p.sendMessage(ChatColor.GRAY + "That player is not online!");
