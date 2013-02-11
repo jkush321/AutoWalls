@@ -128,6 +128,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 	public static int earlyJoinPriority, lateJoinPriority;
 	public static boolean lateJoins;
 	public static boolean preventFireBeforeWallsFall;
+	public static boolean useTabApi;
+	public static ArrayList<String> dead = new ArrayList<String>();
 
 	public void onEnable()
 	{
@@ -162,6 +164,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		config.addDefault("late-joins", true);
 		config.addDefault("prevent-fire-before-walls-fall", true);
 		config.addDefault("max-color-cycler-time", 120);
+		config.addDefault("use-tab-api", true);
 		
 		config.options().copyDefaults(true);
 	    saveConfig();	    
@@ -187,6 +190,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 	    lateJoins = config.getBoolean("late-joins");
 	    preventFireBeforeWallsFall = config.getBoolean("prevent-fire-before-walls-fall");
 	    ColorCycler.MAX_COLOR_TIME = config.getInt("max-color-cycler-time");
+	    useTabApi = config.getBoolean("use-tab-api");
 	    
 	    if (mapNumber == 1)
 	    {	
@@ -266,6 +270,16 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			Bukkit.getPluginManager().registerEvents(new ColoredNames(), this);
 			Tags.useTagAPI=true;
 			System.out.println("[AutoWalls] Successfully hooked into TagAPI!");
+		}
+		if (Bukkit.getPluginManager().getPlugin("TabAPI")!=null)
+		{
+			useTabApi=true;
+			System.out.println("[AutoWalls] Successfully hooked into TagAPI!");
+		}
+		else if (useTabApi)
+		{
+			System.out.println("[AutoWalls] Error! TabAPI is not installed but it was set to be used in the config!");
+			useTabApi = false;
 		}
 	}
 	@SuppressWarnings("deprecation")
@@ -834,6 +848,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			{
 				if (p != pl && !playing.contains(p)) p.hidePlayer(pl);
 			}
+			removeDeadPlayer(p.getName());
+			Tabs.updateAll();
 			Tags.refreshPlayer(p);
 			Bukkit.broadcastMessage(ChatColor.RED + p.getName() + " has joined the " + team + " team!");
 			int remaining = (teamSize * 4) - playing.size();
@@ -891,6 +907,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 					p.showPlayer(pl);
 			}
 		}
+		Tags.refreshPlayer(p);
+		Tabs.updateAll();
 		checkStats();
 	}
 	public void startGame()
@@ -978,13 +996,9 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		if (playing.contains(e.getPlayer()) && gameInProgress) e.getPlayer().setHealth(0);
 		else if (playing.contains(e.getPlayer()) && !gameInProgress) leaveTeam(e.getPlayer());
 		if (getLastEvent(e.getPlayer()) != 0) lastEvent.remove(e.getPlayer());
-		/*if (useSpout)
-		{
-			if (SpoutStuff.ads.containsKey(e.getPlayer().getName())) SpoutStuff.ads.remove(e.getPlayer().getName());
-			if (SpoutStuff.labels.containsKey(e.getPlayer().getName())) SpoutStuff.labels.remove(e.getPlayer().getName());			
-		}*/
 		checkStats();
 		Tags.refreshPlayer(e.getPlayer());
+		Tabs.removePlayer(e.getPlayer());
 		e.setQuitMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + e.getPlayer().getName() + ChatColor.GRAY + " has left");
 	}
 	@EventHandler
@@ -1013,6 +1027,8 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			createGrave(e.getEntity().getLocation(), e.getEntity().getName());
 			checkStats();
 			Tags.refreshPlayer(e.getEntity());
+			addDeadPlayer(e.getEntity().getName());
+			Tabs.updateAll();
 		}
 		} catch (Exception ex) { ex.printStackTrace(); }
 	}
@@ -1081,6 +1097,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		{
 			UpdateChecker.checkAndSendMessage(e.getPlayer());
 		}
+		Tabs.addPlayer(e.getPlayer());
 	}
 	public void checkStats()
 	{
@@ -1619,5 +1636,15 @@ public class AutoWalls extends JavaPlugin implements Listener {
 		{
 			e.getEntity().setMetadata("grenade-type", new FixedMetadataValue(this, e.getEntity().getShooter().getMetadata("last-grenade").get(0).asString()));
 		}
+	}
+	public static void addDeadPlayer(String name)
+	{
+		if (!dead.contains(name)) dead.add(name);
+		Tabs.updateAll();
+	}
+	public static void removeDeadPlayer(String name)
+	{
+		if (dead.contains(name)) dead.remove(name);
+		Tabs.updateAll();
 	}
 }
