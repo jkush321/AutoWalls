@@ -1044,7 +1044,7 @@ public class AutoWalls extends JavaPlugin implements Listener {
 			else e.getPlayer().setDisplayName(ChatColor.WHITE + "[0]" + e.getPlayer().getDisplayName());
 		}
 		if (e.getPlayer().hasPermission("walls.op")) e.getPlayer().setDisplayName(ChatColor.DARK_BLUE + "[" + ChatColor.DARK_GREEN + "Admin" + ChatColor.DARK_BLUE + "]" + ChatColor.DARK_RED + e.getPlayer().getName() + ChatColor.GRAY + ChatColor.WHITE);
-		if (config.isSet("prefix." + e.getPlayer().getName())) e.getPlayer().setDisplayName(config.getString("prefix." + e.getPlayer().getName()).replace("&", "�").replace("{pri}", config.getInt("votes.players." + e.getPlayer().getName())+"") + e.getPlayer().getName() + ChatColor.WHITE);
+		if (config.isSet("prefix." + e.getPlayer().getName())) e.getPlayer().setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getString("prefix." + e.getPlayer().getName())).replace("{pri}", config.getInt("votes.players." + e.getPlayer().getName())+"") + e.getPlayer().getName() + ChatColor.WHITE);
 		if (Bukkit.getOnlinePlayers().length == Bukkit.getMaxPlayers())
 		{
 			if (config.isSet("votes.players." + e.getPlayer().getName()) && (config.getBoolean("priorities") || config.getInt("votes.players." + e.getPlayer().getName()) > 5))
